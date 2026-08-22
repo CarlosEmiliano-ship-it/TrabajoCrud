@@ -94,13 +94,13 @@ $empleados = $empleadoModel->obtenerTodos();
                                 </div>
 
                                 <div class="flex gap-2 pt-4">
-                                    <a href="<?= BASE_URL ?>controllers/editarTarea.php?id=<?= (int)$tar['id'] ?>"
+                                    <a href="<?= BASE_URL ?>views/tareas/editar.php?id=<?= (int)$tar['id'] ?>"
                                        class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-1 px-3 rounded-md text-center">
                                         Editar
                                     </a>
 
                                     <button type="button"
-                                            onclick="abrirModalEliminar(<?= (int)$tar['id'] ?>, '<?= htmlspecialchars($tar['titulo'], ENT_QUOTES) ?>')"
+                                            onclick="abrirModalEliminarTarea(<?= (int)$tar['id'] ?>, '<?= htmlspecialchars($tar['titulo'], ENT_QUOTES) ?>')"
                                             class="flex-1 bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded-md text-center cursor-pointer">
                                         Eliminar
                                     </button>
@@ -114,19 +114,19 @@ $empleados = $empleadoModel->obtenerTodos();
         </div>
     </main>
 
-    <!-- Modal de confirmación -->
-    <div id="modalEliminar" class="hidden fixed inset-0 bg-black/50 items-center justify-center z-50">
+    <!-- Modal de confirmación para eliminar tarea -->
+    <div id="modalEliminarTarea" class="hidden fixed inset-0 bg-black/50 items-center justify-center z-50">
         <div class="bg-white rounded-xl shadow-lg p-6 max-w-sm w-full mx-4">
             <h3 class="text-lg font-bold text-center mb-2">¿Eliminar Tarea?</h3>
             <p class="text-center text-gray-600 mb-6">
-                Estás a punto de borrar "<span id="tituloTareaEliminar" class="font-bold"></span>".
+                Estás a punto de borrar "<span id="tituloTareaEliminar" class="font-bold"></span>". Esta acción no se puede deshacer.
             </p>
             <div class="flex gap-3">
-                <button type="button" onclick="cerrarModalEliminar()"
+                <button type="button" onclick="cerrarModalEliminarTarea()"
                         class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-xl cursor-pointer">
                     Cancelar
                 </button>
-                <a id="linkConfirmarEliminar" href="#"
+                <a id="linkConfirmarEliminarTarea" href="#"
                    class="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-xl text-center">
                     Sí, eliminar
                 </a>
@@ -135,19 +135,23 @@ $empleados = $empleadoModel->obtenerTodos();
     </div>
 
     <script>
-        function abrirModalEliminar(id, titulo) {
+        function abrirModalEliminarTarea(id, titulo) {
             document.getElementById('tituloTareaEliminar').textContent = titulo;
-            document.getElementById('linkConfirmarEliminar').href = '<?= BASE_URL ?>controllers/eliminarTarea.php?id=' + id;
-            const modal = document.getElementById('modalEliminar');
+            document.getElementById('linkConfirmarEliminarTarea').href = '<?= BASE_URL ?>controllers/eliminarTarea.php?id=' + id;
+            const modal = document.getElementById('modalEliminarTarea');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
 
-        function cerrarModalEliminar() {
-            const modal = document.getElementById('modalEliminar');
+        function cerrarModalEliminarTarea() {
+            const modal = document.getElementById('modalEliminarTarea');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
+
+        document.getElementById('modalEliminarTarea').addEventListener('click', function (e) {
+            if (e.target === this) cerrarModalEliminarTarea();
+        });
     </script>
 
     <?php include_once __DIR__ . "/views/includes/footer.php"; ?>

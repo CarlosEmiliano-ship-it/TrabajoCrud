@@ -1,6 +1,11 @@
 <?php
 require_once __DIR__ . "/../../config/conexion.php";
-require_once __DIR__ . "/../../models/Empleado.php";
+
+if (file_exists(__DIR__ . "/../../models/Empleado.php")) {
+    require_once __DIR__ . "/../../models/Empleado.php";
+} else {
+    require_once __DIR__ . "/../../models/empleado.php";
+}
 
 $empleadoModel = new Empleado($conexion);
 $empleados = $empleadoModel->obtenerTodos();
@@ -91,7 +96,7 @@ $empleados = $empleadoModel->obtenerTodos();
         </div>
     </main>
 
-    <!-- Modal de confirmación para eliminar -->
+    <!-- Modal de confirmación -->
     <div id="modalEliminar" class="hidden fixed inset-0 bg-black/50 items-center justify-center z-50">
         <div class="bg-white rounded-xl shadow-lg p-6 max-w-sm w-full mx-4">
             <h3 class="text-lg font-bold text-center mb-2">¿Eliminar empleado?</h3>
@@ -115,9 +120,7 @@ $empleados = $empleadoModel->obtenerTodos();
     <script>
         function abrirModalEliminar(id, nombre) {
             document.getElementById('nombreEmpleadoEliminar').textContent = nombre;
-            // Apunta directo a controllers/eliminarEmpleado.php
-            document.getElementById('linkConfirmarEliminar').href =
-                '<?= BASE_URL ?>controllers/eliminarEmpleado.php?id=' + id;
+            document.getElementById('linkConfirmarEliminar').href = '<?= BASE_URL ?>controllers/eliminarEmpleado.php?id=' + id;
 
             const modal = document.getElementById('modalEliminar');
             modal.classList.remove('hidden');
