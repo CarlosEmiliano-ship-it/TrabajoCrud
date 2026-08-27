@@ -15,14 +15,13 @@ $empleados = $empleadoModel->obtenerTodos();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Tareas</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/src/output.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/output.css">
 </head>
 <body>
     <?php include_once __DIR__ . "/views/includes/header.php"; ?>
 
     <main class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-
             <!-- Columna izquierda: Formulario -->
             <div class="bg-zinc-200 shadow-lg p-4 w-full rounded-lg">
                 <h2 class="uppercase text-xl font-bold text-center py-4">Agregar Tarea</h2>

@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 define('BASE_URL', 'http://qatx2tlp.infinityfreeapp.com/');
 
 $dsn = "mysql:host=sql103.infinityfree.com;dbname=if0_42716290_TareasEmpleados;charset=utf8";
