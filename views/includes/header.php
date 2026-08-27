@@ -8,8 +8,8 @@ $paginaActual = basename($_SERVER['PHP_SELF']);
             <div class="relative flex items-center justify-between h-16">
                 <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex items-center">
-                        <img class="block lg:hidden h-8 w-auto" src="<?= BASE_URL ?>assets/img/img/si.webp" alt="Logo">
-                        <img class="hidden lg:block h-8 w-auto" src="<?= BASE_URL ?>assets/img/img/si.webp" alt="Logo">
+                        <img class="block lg:hidden h-8 w-auto" src="<?= BASE_URL ?>assets/img/img/sis.jpg" alt="Logo">
+                        <img class="hidden lg:block h-8 w-auto" src="<?= BASE_URL ?>assets/img/img/sis.jpg" alt="Logo">
                     </div>
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
