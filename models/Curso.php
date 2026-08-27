@@ -56,4 +56,38 @@ class Curso
             exit();
         }
     }
+
+    public function actualizar(int $id, array $datos): bool
+    {
+        try {
+            $sql = "UPDATE curso SET nombre_curso = :nombre_curso, descripcion = :descripcion WHERE id = :id";
+            $stmt = $this->conexion->prepare($sql);
+            return $stmt->execute([
+                ':id'           => $id,
+                ':nombre_curso' => $datos['nombre_curso'],
+                ':descripcion'  => $datos['descripcion']
+            ]);
+        } catch (PDOException $e) {
+            echo "<div style='background-color: #ffcccc; color: #990000; padding: 15px; font-family: monospace;'>";
+            echo "<strong>¡Error en Curso->actualizar()!</strong><br>";
+            echo "Mensaje: " . $e->getMessage();
+            echo "</div>";
+            exit();
+        }
+    }
+
+    public function eliminar(int $id): bool
+    {
+        try {
+            $sql = "DELETE FROM curso WHERE id = :id";
+            $stmt = $this->conexion->prepare($sql);
+            return $stmt->execute([':id' => $id]);
+        } catch (PDOException $e) {
+            echo "<div style='background-color: #ffcccc; color: #990000; padding: 15px; font-family: monospace;'>";
+            echo "<strong>¡Error en Curso->eliminar()!</strong><br>";
+            echo "Mensaje: " . $e->getMessage();
+            echo "</div>";
+            exit();
+        }
+    }
 }
