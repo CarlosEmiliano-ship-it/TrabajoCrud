@@ -12,30 +12,29 @@ $paginaActual = basename($_SERVER['PHP_SELF']);
                     </div>
                     <div class="hidden sm:block sm:ml-6">
                        <div class="flex space-x-4">
-    <a href="<?= BASE_URL ?>index.php"
-       class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'index.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
+    <a href="<?= BASE_URL ?>index.php" class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'index.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
         Tareas
     </a>
     <a href="<?= BASE_URL ?>views/empleados/agregar.php"
        class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'agregar.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
         Empleados
     </a>
-    <a href="<?= BASE_URL ?>views/cursos/index.php"
+    <a href="<?= BASE_URL ?>views/cursos/agregar.php"
        class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'cursos.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
         Cursos
     </a>
 
-    <a href="<?= BASE_URL ?>views/estudiantes/index.php"
+    <a href="<?= BASE_URL ?>views/estudiantes/agregar.php"
        class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'estudiantes.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
         Estudiantes
     </a>
 
-    <a href="<?= BASE_URL ?>views/proveedores/index.php"
+    <a href="<?= BASE_URL ?>views/proveedores/agregar.php"
        class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'proveedores.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
         Proveedores
     </a>
 
-    <a href="<?= BASE_URL ?>views/productos/index.php"
+    <a href="<?= BASE_URL ?>views/productos/agregar.php"
        class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'productos.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
         Productos
     </a>
