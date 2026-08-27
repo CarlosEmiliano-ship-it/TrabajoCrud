@@ -20,12 +20,12 @@ $paginaActual = basename($_SERVER['PHP_SELF']);
         Empleados
     </a>
     <a href="<?= BASE_URL ?>views/cursos/agregar.php"
-       class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'cursos.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
+       class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'Curso.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
         Cursos
     </a>
 
     <a href="<?= BASE_URL ?>views/estudiantes/agregar.php"
-       class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'estudiantes.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
+       class="px-3 py-2 rounded-md text-sm font-medium <?= $paginaActual === 'Estudiantes.php' ? 'bg-gray-700 text-white' : 'text-white hover:bg-gray-700 hover:text-white' ?>">
         Estudiantes
     </a>
 
