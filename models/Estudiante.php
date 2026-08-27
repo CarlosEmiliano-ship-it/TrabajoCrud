@@ -28,7 +28,7 @@ class Estudiante
     {
         $sql = "SELECT e.*, c.nombre_curso AS curso_nombre 
                 FROM estudiante e
-                INNER JOIN curso c ON e.id_curso = c.id
+                INNER JOIN curso c ON e.curso_id = c.id
                 ORDER BY e.id DESC";
         $stmt = $this->conexion->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
