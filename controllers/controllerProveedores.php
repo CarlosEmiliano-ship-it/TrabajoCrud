@@ -14,11 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $proveedorModel = new Proveedor($conexion);
-        $guardado = $proveedorModel->agregar([
-            'nombre_proveedor' => $nombre,
-            'contacto'         => $contacto,
-            'telefono'         => $telefono
-        ]);
+        
+        // Se pasan los 3 argumentos que espera el método en Proveedor.php
+        $guardado = $proveedorModel->agregar($nombre, $contacto, $telefono);
 
         header("Location: " . BASE_URL . "views/proveedores/agregar.php?status=" . ($guardado ? "success" : "error"));
         exit;

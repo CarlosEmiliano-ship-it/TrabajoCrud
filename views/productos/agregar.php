@@ -29,7 +29,7 @@ $proveedores = $proveedorModel->obtenerTodos();
 
                 <?php if (isset($_GET['status'])): ?>
                     <?php if ($_GET['status'] === 'success'): ?>
-                        <div class="bg-green-100 text-green-800 text-center p-3 rounded-md mb-4">Producto agregado correctamente.</div>
+                        <div class="bg-green-100 text-green-800 text-center p-3 rounded-md mb-4">Operación realizada correctamente.</div>
                     <?php elseif ($_GET['status'] === 'deleted'): ?>
                         <div class="bg-green-100 text-green-800 text-center p-3 rounded-md mb-4">Producto eliminado correctamente.</div>
                     <?php elseif ($_GET['status'] === 'error'): ?>
@@ -82,6 +82,10 @@ $proveedores = $proveedorModel->obtenerTodos();
                                 </div>
 
                                 <div class="flex gap-2 p-3 pt-0">
+                                    <a href="../../controllers/editarProducto.php?id=<?= (int)$prod['id'] ?>"
+                                       class="flex-1 bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold py-1 px-3 rounded-md text-center cursor-pointer">
+                                        Editar
+                                    </a>
                                     <button type="button"
                                             onclick="abrirModalEliminar(<?= (int)$prod['id'] ?>, '<?= htmlspecialchars($prod['nombre_producto'], ENT_QUOTES) ?>')"
                                             class="flex-1 bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded-md text-center cursor-pointer">

@@ -22,4 +22,57 @@ class Proveedor
             exit();
         }
     }
+
+    public function agregar($nombre_proveedor, $contacto, $telefono): bool
+    {
+        try {
+            $sql = "INSERT INTO proveedor (nombre_proveedor, contacto, telefono) VALUES (?, ?, ?)";
+            $stmt = $this->conexion->prepare($sql);
+            return $stmt->execute([$nombre_proveedor, $contacto, $telefono]);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function obtenerPorId(int $id)
+    {
+        try {
+            $sql = "SELECT * FROM proveedor WHERE id = :id LIMIT 1";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->execute([':id' => $id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+   public function actualizar(int $id, array $datos): bool
+    {
+        try {
+            $sql = "UPDATE proveedor 
+                    SET nombre_proveedor = ?, contacto = ?, telefono = ? 
+                    WHERE id = ?";
+            $stmt = $this->conexion->prepare($sql);
+            return $stmt->execute([
+                $datos['nombre_proveedor'], 
+                $datos['contacto'], 
+                $datos['telefono'], 
+                $id
+            ]);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function eliminar(int $id): bool
+    {
+        try {
+            $sql = "DELETE FROM proveedor WHERE id = :id";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

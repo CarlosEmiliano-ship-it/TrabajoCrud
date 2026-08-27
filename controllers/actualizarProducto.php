@@ -13,11 +13,14 @@ if ($id <= 0) {
     exit;
 }
 
-$nombre = trim($_POST['nombre'] ?? '');
-$precio = trim($_POST['precio'] ?? '');
-$stock  = trim($_POST['stock'] ?? '');
+$nombre_producto  = trim($_POST['nombre_producto'] ?? '');
+$fecha_creacion   = trim($_POST['fecha_creacion'] ?? '');
+$fecha_caducidad  = !empty($_POST['fecha_caducidad']) ? trim($_POST['fecha_caducidad']) : null;
+$precio           = trim($_POST['precio'] ?? '');
+$stock            = trim($_POST['stock'] ?? '');
+$proveedor_id     = isset($_POST['proveedor_id']) ? (int)$_POST['proveedor_id'] : 0;
 
-if ($nombre === '' || $precio === '') {
+if ($nombre_producto === '' || $precio === '' || $proveedor_id <= 0) {
     header("Location: " . BASE_URL . "controllers/editarProducto.php?id=" . $id . "&status=error&msg=campos_incompletos");
     exit;
 }
@@ -25,13 +28,16 @@ if ($nombre === '' || $precio === '') {
 try {
     $productoModel = new Producto($conexion);
     $actualizado = $productoModel->actualizar($id, [
-        'nombre' => $nombre,
-        'precio' => $precio,
-        'stock'  => $stock
+        'nombre_producto'  => $nombre_producto,
+        'fecha_creacion'   => $fecha_creacion,
+        'fecha_caducidad'  => $fecha_caducidad,
+        'precio'           => $precio,
+        'stock'            => $stock,
+        'proveedor_id'     => $proveedor_id
     ]);
 
     header("Location: " . BASE_URL . ($actualizado
-        ? "views/productos/agregar.php?status=updated"
+        ? "views/productos/agregar.php?status=success"
         : "controllers/editarProducto.php?id=" . $id . "&status=error&msg=no_se_pudo_actualizar"));
     exit;
 } catch (PDOException $e) {
